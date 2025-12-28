@@ -1,0 +1,68 @@
+{
+  "name": "swapped-commerce-sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for Swapped Commerce API - Functional, performant, and fully typed",
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "test:unit": "bun test tests/unit",
+    "test:integration": "bun test tests/integration",
+    "benchmark": "bun run scripts/run-benchmarks.ts",
+    "benchmark:test": "bun test benchmarks/performance.test.ts",
+    "lint": "bunx biome check src",
+    "lint:fix": "bunx biome check --write src",
+    "format": "bunx biome format --write src"
+  },
+  "keywords": [
+    "swapped",
+    "commerce",
+    "crypto",
+    "payment",
+    "gateway",
+    "cryptocurrency",
+    "bitcoin",
+    "ethereum",
+    "sdk",
+    "typescript"
+  ],
+  "author": {
+    "name": "xpriori",
+    "url": "https://github.com/phtn"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phtn/swapped-commerce-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phtn/swapped-commerce-sdk/issues"
+  },
+  "homepage": "https://github.com/phtn/swapped-commerce-sdk#readme",
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}

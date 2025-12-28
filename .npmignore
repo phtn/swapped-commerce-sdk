@@ -1,0 +1,38 @@
+# Development files
+node_modules/
+.bun/
+dist/
+*.log
+
+# Test files
+tests/
+benchmarks/
+scripts/
+
+# Examples
+examples/
+
+# Documentation
+PLAN.md
+CLAUDE.md
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.tsbuildinfo
+
+# Lock files (keep bun.lock for development, but npm will use its own)
+bun.lock
+
+# Temporary files
+*.tmp
+*.temp
