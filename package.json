@@ -1,6 +1,6 @@
 {
   "name": "swapped-commerce-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript SDK for Swapped Commerce Integration API - Functional, performant, and fully typed",
   "type": "module",
   "main": "./dist/index.js",
