@@ -9,8 +9,8 @@
 - [x] Files field configured correctly
 - [x] .npmignore created
 - [x] LICENSE file created
-- [ ] Repository URL updated (currently placeholder)
-- [ ] Author field filled (if desired)
+- [x] Repository URL updated (currently placeholder)
+- [x] Author field filled (if desired)
 
 ### Code Quality
 - [x] All tests passing (27 unit tests)
