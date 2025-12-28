@@ -3,18 +3,20 @@
   "version": "1.0.0",
   "description": "TypeScript SDK for Swapped Commerce Integration API - Functional, performant, and fully typed",
   "type": "module",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "scripts": {
-    "build": "bun build src/index.ts --outdir dist --target bun",
+    "build": "bun build src/index.ts --outdir dist --target node --format esm",
+    "build:dev": "bun build src/index.ts --outdir dist --target node --format esm",
+    "prepublishOnly": "bun run build",
     "test": "bun test",
     "test:watch": "bun test --watch",
     "test:coverage": "bun test --coverage",
@@ -50,6 +52,7 @@
     "typescript": "^5"
   },
   "files": [
+    "dist",
     "src",
     "README.md",
     "LICENSE"
