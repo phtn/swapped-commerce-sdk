@@ -16,7 +16,7 @@ export async function getQuote(
   return request<QuoteResponse>(
     httpConfig.config,
     'POST',
-    '/v1/merchants/quotes',
+    '/v1/quotes',
     {
       body: params,
     }

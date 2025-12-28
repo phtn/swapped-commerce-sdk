@@ -17,7 +17,7 @@ export async function listBalances(
   return request<BalancesResponse>(
     httpConfig.config,
     'GET',
-    '/v1/merchants/balances',
+    '/v1/balances',
     {
       params,
     }
@@ -34,6 +34,6 @@ export async function getBalance(
   return request<Balance>(
     httpConfig.config,
     'GET',
-    `/v1/merchants/balances/${encodeURIComponent(currencyId)}`
+    `/v1/balances/${encodeURIComponent(currencyId)}`
   )
 }

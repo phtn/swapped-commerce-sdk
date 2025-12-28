@@ -16,7 +16,7 @@ export async function listOrders(
   httpConfig: HttpConfig,
   params?: Readonly<ListOrdersParams>
 ): Promise<ApiResponse<OrdersResponse>> {
-  return request<OrdersResponse>(httpConfig.config, 'GET', '/v1/merchants/orders', {
+  return request<OrdersResponse>(httpConfig.config, 'GET', '/v1/orders', {
     params,
   })
 }
@@ -31,7 +31,7 @@ export async function getOrder(
   return request<Order>(
     httpConfig.config,
     'GET',
-    `/v1/merchants/orders/${encodeURIComponent(orderId)}`
+    `/v1/orders/${encodeURIComponent(orderId)}`
   )
 }
 

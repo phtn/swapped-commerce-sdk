@@ -19,7 +19,7 @@ export async function createPayout(
   return request<CreatePayoutResponse>(
     httpConfig.config,
     'POST',
-    '/v1/merchants/payouts',
+    '/v1/payouts',
     {
       body: params,
     }
@@ -36,7 +36,7 @@ export async function listPayouts(
   return request<PayoutsResponse>(
     httpConfig.config,
     'GET',
-    '/v1/merchants/payouts',
+    '/v1/payouts',
     {
       params,
     }
@@ -53,6 +53,6 @@ export async function getPayout(
   return request<Payout>(
     httpConfig.config,
     'GET',
-    `/v1/merchants/payouts/${encodeURIComponent(payoutId)}`
+    `/v1/payouts/${encodeURIComponent(payoutId)}`
   )
 }

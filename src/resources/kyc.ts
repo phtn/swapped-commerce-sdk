@@ -17,7 +17,7 @@ export async function getKYCStatus(
   return request<KYCStatusResponse>(
     httpConfig.config,
     'GET',
-    `/v1/merchants/kyc/${encodeURIComponent(customerId)}`
+    `/v1/kyc/${encodeURIComponent(customerId)}`
   )
 }
 
@@ -31,7 +31,7 @@ export async function submitKYC(
   return request<SubmitKYCResponse>(
     httpConfig.config,
     'POST',
-    '/v1/merchants/kyc',
+    '/v1/kyc',
     {
       body: params,
     }

@@ -16,7 +16,7 @@ export async function createPaymentRoute(
   return request<PaymentRouteResponse>(
     httpConfig.config,
     'POST',
-    '/v1/merchants/payment-routes',
+    '/v1/payment-routes',
     {
       body: params,
     }
