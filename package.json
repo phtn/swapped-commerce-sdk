@@ -1,7 +1,7 @@
 {
   "name": "swapped-commerce-sdk",
   "version": "1.0.0",
-  "description": "TypeScript SDK for Swapped Commerce API - Functional, performant, and fully typed",
+  "description": "TypeScript SDK for Swapped Commerce Integration API - Functional, performant, and fully typed",
   "type": "module",
   "main": "src/index.ts",
   "module": "src/index.ts",

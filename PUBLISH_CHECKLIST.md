@@ -75,14 +75,50 @@ Included files:
 npm publish --dry-run
 ```
 
-**Publish to npm:**
+**Publish to npm (Latest Tag - Default):**
 ```bash
+# These are equivalent - both publish with 'latest' tag
 npm publish
+npm publish --tag latest
+npm publish -t latest
+```
+
+**Publish with Custom Tags:**
+```bash
+# Publish as beta
+npm publish --tag beta
+
+# Publish as next (for upcoming versions)
+npm publish --tag next
+
+# Publish as rc (release candidate)
+npm publish --tag rc
 ```
 
 **Publish with specific registry:**
 ```bash
 npm publish --registry=https://registry.npmjs.org/
+```
+
+**Check Current Tags:**
+```bash
+# View all tags for your package
+npm dist-tag ls swapped-commerce-sdk
+
+# View tags for any package
+npm view swapped-commerce-sdk dist-tags
+```
+
+**Manage Tags After Publishing:**
+```bash
+# Add/update a tag to existing version
+npm dist-tag add swapped-commerce-sdk@1.0.0 beta
+
+# Move latest tag to different version
+npm dist-tag add swapped-commerce-sdk@1.1.0 latest
+
+# Remove a tag
+npm dist-tag rm swapped-commerce-sdk beta
 ```
 
 ### Post-Publish
