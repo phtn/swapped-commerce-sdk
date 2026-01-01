@@ -27,6 +27,8 @@ import type {
   SubmitKYCParams,
   SubmitKYCResponse,
   WebhookEvent,
+  CurrenciesResponse,
+  BlockchainsResponse,
 } from '../types'
 import * as ordersResource from '../resources/orders'
 import * as paymentLinksResource from '../resources/paymentLinks'
@@ -36,6 +38,8 @@ import * as balancesResource from '../resources/balances'
 import * as quotesResource from '../resources/quotes'
 import * as payoutsResource from '../resources/payouts'
 import * as kycResource from '../resources/kyc'
+import * as currenciesResource from '../resources/currencies'
+import * as blockchainsResource from '../resources/blockchains'
 import { verifyWebhookSignature, parseWebhookEvent } from '../utils/webhooks'
 
 /**
@@ -75,6 +79,12 @@ export interface SwappedClient {
     readonly get: (
       params: Readonly<GetQuoteParams>
     ) => Promise<ApiResponse<QuoteResponse>>
+  }
+  readonly currencies: {
+    readonly list: () => Promise<ApiResponse<CurrenciesResponse>>
+  }
+  readonly blockchains: {
+    readonly list: () => Promise<ApiResponse<BlockchainsResponse>>
   }
   readonly payouts: {
     readonly create: (
@@ -161,6 +171,12 @@ export function createClient(config: SwappedConfig): SwappedClient {
     quotes: {
       get: (params: Readonly<GetQuoteParams>) =>
         quotesResource.getQuote(httpConfig, params),
+    },
+    currencies: {
+      list: () => currenciesResource.listCurrencies(httpConfig),
+    },
+    blockchains: {
+      list: () => blockchainsResource.listBlockchains(httpConfig),
     },
     payouts: {
       create: (params: Readonly<CreatePayoutParams>) =>

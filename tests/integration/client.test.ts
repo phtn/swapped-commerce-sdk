@@ -37,6 +37,8 @@ describe('Swapped Commerce SDK Integration Tests', () => {
     expect(client.payments).toBeDefined()
     expect(client.balances).toBeDefined()
     expect(client.quotes).toBeDefined()
+    expect(client.currencies).toBeDefined()
+    expect(client.blockchains).toBeDefined()
     expect(client.payouts).toBeDefined()
     expect(client.kyc).toBeDefined()
   })
@@ -76,6 +78,43 @@ describe('Swapped Commerce SDK Integration Tests', () => {
     expect(response.data.toAmount.beforeFees).toBeDefined()
     expect(response.data.toAmount.afterFees).toBeDefined()
     expect(response.data.toAmount.currency.symbol).toBe('TRX')
+  })
+
+  test('can list currencies', async () => {
+    const response = await client.currencies.list()
+
+    expect(response.success).toBe(true)
+    expect(response.data).toBeDefined()
+    expect(Array.isArray(response.data)).toBe(true)
+    expect(response.data.length).toBeGreaterThan(0)
+
+    const currency = response.data[0]
+    expect(currency.id).toBeDefined()
+    expect(currency.name).toBeDefined()
+    expect(currency.symbol).toBeDefined()
+    expect(currency.type).toBeDefined()
+    expect(currency.precision).toBeDefined()
+    expect(currency.blockchain).toBeDefined()
+    expect(currency.currencyGroup).toBeDefined()
+  })
+
+  test('can list blockchains', async () => {
+    const response = await client.blockchains.list()
+
+    expect(response.success).toBe(true)
+    expect(response.data).toBeDefined()
+    expect(Array.isArray(response.data)).toBe(true)
+    expect(response.data.length).toBeGreaterThan(0)
+
+    const blockchain = response.data[0]
+    expect(blockchain.id).toBeDefined()
+    expect(blockchain.name).toBeDefined()
+    expect(blockchain.symbol).toBeDefined()
+    expect(blockchain.chainId).toBeDefined()
+    expect(blockchain.explorerUrl).toBeDefined()
+    expect(blockchain.ecosystem).toBeDefined()
+    expect(blockchain.currencies).toBeDefined()
+    expect(Array.isArray(blockchain.currencies)).toBe(true)
   })
 
   test('can list payouts', async () => {

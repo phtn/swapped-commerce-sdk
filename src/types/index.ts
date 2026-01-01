@@ -16,8 +16,14 @@ export type {
 export type {
   CurrencyType,
   CurrencyFlow,
+  CurrencyGroup,
   Blockchain,
+  BlockchainFull,
+  BlockchainComplete,
+  BlockchainsResponse,
   Currency,
+  CurrencyFull,
+  CurrenciesResponse,
 } from './currencies'
 
 // Quote types
