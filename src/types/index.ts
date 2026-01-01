@@ -22,7 +22,10 @@ export type {
 
 // Quote types
 export type {
+  QuoteCurrency,
   MoneyAmount,
+  QuoteFromAmount,
+  QuoteToAmount,
   Fee,
   Quote,
   GetQuoteParams,

@@ -1,11 +1,38 @@
-import type { Currency } from './currencies'
+import type { Blockchain, Currency } from './currencies'
 
 /**
- * Money amount with currency
+ * Simplified currency info returned in quote responses
+ */
+export interface QuoteCurrency {
+  readonly symbol: string
+  readonly precision: number
+  readonly type: 'FIAT' | 'CRYPTO'
+  readonly blockchain: { readonly name: string } | null
+}
+
+/**
+ * Money amount with currency (used in orders and other contexts)
  */
 export interface MoneyAmount {
   readonly amount: string
   readonly currency: Currency
+}
+
+/**
+ * Quote from amount with currency
+ */
+export interface QuoteFromAmount {
+  readonly amount: string
+  readonly currency: QuoteCurrency
+}
+
+/**
+ * Quote to amount with before/after fees
+ */
+export interface QuoteToAmount {
+  readonly beforeFees: string
+  readonly afterFees: string
+  readonly currency: QuoteCurrency
 }
 
 /**
@@ -21,7 +48,7 @@ export interface Fee {
 }
 
 /**
- * Exchange quote
+ * Exchange quote (used in orders)
  */
 export interface Quote {
   readonly fromAmount: MoneyAmount
@@ -34,16 +61,21 @@ export interface Quote {
  * Parameters for getting a quote
  */
 export interface GetQuoteParams {
-  readonly fromCurrency: string
+  /** Amount to convert from */
+  readonly fromAmount: string | number
+  /** Source fiat currency symbol (e.g., 'EUR', 'USD') */
+  readonly fromFiatCurrency: string
+  /** Target currency symbol (e.g., 'TRX', 'USDT') */
   readonly toCurrency: string
-  readonly amount: string
-  readonly amountType: 'FROM' | 'TO'
+  /** Target blockchain name (e.g., 'tron', 'ethereum') */
+  readonly toBlockchain: string
 }
 
 /**
  * Response for getting a quote
  */
 export interface QuoteResponse {
-  readonly quote: Quote
-  readonly expiresAt: string
+  readonly exchangeRateSnapshotId: string
+  readonly fromAmount: QuoteFromAmount
+  readonly toAmount: QuoteToAmount
 }

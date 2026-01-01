@@ -60,17 +60,22 @@ describe('Swapped Commerce SDK Integration Tests', () => {
 
   test('can get a quote', async () => {
     const response = await client.quotes.get({
-      fromCurrency: 'USD',
-      toCurrency: 'BTC',
-      amount: '100.00',
-      amountType: 'FROM',
+      fromAmount: 25,
+      fromFiatCurrency: 'EUR',
+      toCurrency: 'TRX',
+      toBlockchain: 'tron',
     })
 
     expect(response.success).toBe(true)
     expect(response.data).toBeDefined()
-    expect(response.data.quote).toBeDefined()
-    expect(response.data.quote.fromAmount).toBeDefined()
-    expect(response.data.quote.toAmount).toBeDefined()
+    expect(response.data.exchangeRateSnapshotId).toBeDefined()
+    expect(response.data.fromAmount).toBeDefined()
+    expect(response.data.fromAmount.amount).toBe('25.00')
+    expect(response.data.fromAmount.currency.symbol).toBe('EUR')
+    expect(response.data.toAmount).toBeDefined()
+    expect(response.data.toAmount.beforeFees).toBeDefined()
+    expect(response.data.toAmount.afterFees).toBeDefined()
+    expect(response.data.toAmount.currency.symbol).toBe('TRX')
   })
 
   test('can list payouts', async () => {
